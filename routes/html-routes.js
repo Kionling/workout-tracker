@@ -1,25 +1,11 @@
-const express = require("express");
-const mongoose = require("mongoose");
+const fs = require("fs");
+const router = require("express").Router();
+const path = require("path");
 
-const PORT = process.env.PORT || 3000;
 
-const app = express();
+router.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/index.js"))
+})
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
-app.use(express.static("public"));
-
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
-
-// routes
-//need api routes
-
-app.use(require("./routes/html-routes.js"));
-
-app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}!`);
-});
+module.exports = router;
