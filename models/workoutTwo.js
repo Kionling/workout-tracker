@@ -6,9 +6,9 @@ const Schema = mongoose.Schema;
 
 
 const exerciseSchema = new Schema ({
-    date: {
+    day: {
         type: Date,
-        default:Date.now
+        default: Date.now
     },
     exercises: [ 
         {
@@ -29,14 +29,17 @@ const exerciseSchema = new Schema ({
         duration: {
           type: Number
         },
-        se4t: {
-          type:Number
+        set: {
+          type: Number
         },
         reps: {
           type: Number
         }
       }
-      ]
+      ],
+      totalDuration: {
+          type: Number
+      }
 
 })
 

@@ -26,7 +26,7 @@ router.put("/api/workouts/:id", ( req, res) => {
 
 
 router.post("/api/workouts/bulk", ({ body }, res) => {
-  Evercise.insertMany(body)
+  Exercise.insertMany(body)
     .then(dbExercise => {
       res.json(dbExercise);
     })
