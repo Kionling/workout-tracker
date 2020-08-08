@@ -12,7 +12,15 @@ router.post("/api/workouts", ({ body }, res) => {
 });
 
 //Need to update workout by id
-router.put("/api/workouts/:id")
+router.put("/api/workouts/:id", ( req , res) => {
+    Workout.findByIdAndUpdate(req.params.id, {$push: { exercises: req.body} }, {new: true})
+    .then(function(dbworkout){
+        console.log("get", dbworkout)
+        res.send(dbworkout)
+    }).catch(function(err){
+        if(err)throw err
+    })
+})
 
 
 
